@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Countdown from './components/countdown';
 import SecretWelcome from '@/app/components/secretwelcome';
 import ScratchDetails from '@/app/components/scratchreveal';
@@ -55,6 +56,12 @@ function SectionTitle({
         {label}
       </p>
 
+      <div className="mx-auto mt-3 flex items-center justify-center gap-3">
+        <span className="text-2xl text-[#d9a441]">ॐ</span>
+        <div className="h-0.5 flex-1 rounded-full bg-gradient-to-r from-[#d9a441] via-[#bc6c4b] to-[#d9a441]" />
+        <span className="text-2xl text-[#d9a441]">ॐ</span>
+      </div>
+
       <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#22323a] sm:text-5xl">
         {title}
       </h2>
@@ -100,19 +107,30 @@ const googleCalendarLink =
 return (
   <Lamp>
     <main className="overflow-hidden bg-[#f8f2e9] text-[#22323a]">
-      <section className="relative min-h-screen overflow-hidden px-5 py-8 sm:px-8">
+      <section className="relative min-h-screen overflow-hidden px-5 py-6 sm:px-8">
         <div className="absolute -left-32 -top-28 h-80 w-80 rounded-full bg-[#d9a441]/25 blur-3xl" />
         <div className="absolute -bottom-32 -right-20 h-96 w-96 rounded-full bg-[#bc6c4b]/20 blur-3xl" />
         <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d9a441]/30" />
 
-        <div className="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col rounded-[2rem] border border-white/70 bg-white/55 px-6 py-8 shadow-2xl backdrop-blur-sm sm:px-12 sm:py-10">
-          <header className="flex items-center justify-between">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#bc6c4b]">
-              New Beginnings
-            </p>
+        <div className="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col rounded-[2rem] border border-[#f3d29b]/40 bg-gradient-to-br from-[#fff7e1] via-[#fff1d0] to-[#f7e0b9] px-6 py-8 shadow-2xl backdrop-blur-sm sm:px-12 sm:py-10">
+          <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-3 text-[#b3731e]">
+              <span className="text-3xl leading-none">ॐ</span>
+              <span className="text-xs font-bold uppercase tracking-[0.28em] text-[#bc6c4b]">
+                श्री गणेशाय नमः
+              </span>
+            </div>
+            <div className="text-right">
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#bc6c4b]">
+                New Beginnings
+              </p>
+              <p className="mt-1 text-xs uppercase tracking-[0.3em] text-[#b3731e]">
+                शुभ गृह प्रवेश
+              </p>
+            </div>
           </header>
 
-          <div className="my-auto py-20 text-center">
+          <div className="my-auto py-16 text-center">
             <p className="mb-6 text-sm font-bold uppercase tracking-[0.32em] text-[#bc6c4b]">
               You are warmly invited
             </p>
@@ -131,45 +149,50 @@ return (
 
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <a
-  href="/invitation-card.jpeg"
-  download= "Housewarming-Invitation.jpeg"
-  className="rounded-full border border-[#22323a]/20 bg-white/60 px-7 py-4 text-sm font-bold transition hover:border-[#bc6c4b] hover:text-[#bc6c4b]"
->
-  View Invitation Card
-</a>
+                href="/invitation-card.jpeg"
+                download="Housewarming-Invitation.jpeg"
+                className="rounded-full border border-[#d9a441]/20 bg-gradient-to-r from-[#fff7e1] to-[#f5e0b5] px-7 py-4 text-sm font-bold uppercase tracking-[0.1em] text-[#b3731e] shadow-sm transition duration-300 hover:border-[#bc6c4b] hover:text-[#bc6c4b]"
+              >
+                View Invitation Card
+              </a>
 
               <a
                 href={`https://wa.me/${event.whatsappNumber}?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-[#22323a]/20 bg-white/60 px-7 py-4 text-sm font-bold transition hover:border-[#bc6c4b] hover:text-[#bc6c4b]"
+                className="rounded-full border border-[#d9a441]/20 bg-gradient-to-r from-[#fff7e1] to-[#f5e0b5] px-7 py-4 text-sm font-bold uppercase tracking-[0.1em] text-[#b3731e] shadow-sm transition duration-300 hover:border-[#bc6c4b] hover:text-[#bc6c4b]"
               >
                 Share Wishes on WhatsApp
               </a>
             </div>
           </div>
 
-          <p className="text-center text-xs uppercase tracking-[0.25em] text-[#6f7a7d]">
-            Scroll to celebrate with us
-          </p>
+          <div className="mt-8 text-center text-sm font-semibold uppercase tracking-[0.32em] text-[#7b6b5a]">
+            <a href="#details" className="inline-flex items-center gap-2 text-[#7b6b5a] transition hover:text-[#b3731e]">
+              <span className="font-serif text-lg">Scroll down</span>
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#d9a441]/20 bg-[#fff0d4]/90 text-[#b3731e] shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
+                <span className="animate-bounce">↓</span>
+              </span>
+            </a>
+          </div>
         </div>
       </section>
 
-      <section className="px-5 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
-          <div className="relative mx-auto aspect-square w-full max-w-md rounded-[2.5rem] bg-[#22323a] p-6">
-            <div className="flex h-full flex-col justify-between rounded-[2rem] border border-[#d9a441]/50 p-7 text-[#f8f2e9]">
-              <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#d9a441]">
-                New Home
-              </p>
-
-              <p className="font-serif text-4xl italic leading-tight sm:text-5xl">
-                A house becomes a home when it is shared.
-              </p>
-
-              <p className="text-right text-sm uppercase tracking-[0.22em] text-[#d9a441]">
-                Welcome
-              </p>
+      <section className="px-5 py-12 sm:px-8 sm:py-16">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2">
+          <div className="mx-auto w-full max-w-md rounded-[2.5rem] bg-[#22323a] p-4 shadow-2xl ring-1 ring-[#d9a441]/15">
+            <div className="relative overflow-hidden rounded-[2rem] border border-[#d9a441]/40 bg-[#14212a] shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src="/house-pic.jpeg"
+                  alt="New home image"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute inset-x-0 bottom-0 rounded-b-[2rem] bg-gradient-to-t from-black/60 to-transparent p-4 text-center text-xs uppercase tracking-[0.24em] text-[#f8f2e9]">
+                Welcome to our new home
+              </div>
             </div>
           </div>
 
@@ -195,7 +218,7 @@ return (
         </div>
       </section>
 
-      <section className="bg-[#e9ded0] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="bg-[#e9ded0] px-5 py-12 sm:px-8 sm:py-16">
         <div className="mx-auto max-w-4xl">
           <SectionTitle
             label="Counting down"
@@ -209,7 +232,7 @@ return (
         </div>
       </section>
 
-      <section id="details" className="px-5 py-20 sm:px-8 sm:py-28">
+      <section id="details" className="px-5 py-12 sm:px-8 sm:py-16">
         <div className="mx-auto max-w-6xl">
           <SectionTitle
             label="Mark your calendar"
@@ -236,7 +259,7 @@ return (
         </div>
       </section>
 
-      <section className="px-5 py-20 sm:px-8 sm:py-28">
+      <section className="px-5 py-16 sm:px-8 sm:py-20">
         <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-[#bc6c4b] shadow-xl">
           <div className="grid md:grid-cols-2">
             <div className="p-8 text-white sm:p-14">
@@ -245,7 +268,7 @@ return (
               </p>
 
               <h2 className="mt-4 text-4xl font-semibold sm:text-5xl">
-                Our new address
+                Event Location
               </h2>
 
               <p className="mt-6 text-lg leading-8 text-white/85">
@@ -274,7 +297,7 @@ return (
 
       <section className="px-5 pb-10 pt-6 text-center sm:px-8 sm:pb-16">
         <SectionTitle
-          label="Save your seat"
+          label="Save the date"
           title="Will you join us?"
           description="Please let us know if you can make it. We cannot wait to welcome you home."
         />
@@ -293,7 +316,7 @@ return (
 
       <footer className="border-t border-[#22323a]/10 bg-[#f8f2e9] px-5 py-8 text-center sm:px-8">
         <p className="font-serif text-xl italic text-[#bc6c4b]">
-          With love, {event.hosts}
+          With love, Adithyan and Abhirami
         </p>
 
         <p className="mt-2 text-sm text-[#6f7a7d]">
