@@ -14,7 +14,7 @@ const event = {
   address: "Kalabhavanam Panthaplavu P.O. Pattazhy, Kollam, Kerala 691522",
   latitude: 9.0769399,
   longitude: 76.8248472,
-  whatsappNumber: "919961356278",
+  whatsappNumber: "918848762415",
   mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m30!1m8!1m3!1d984.9640938651964!2d76.8250705!3d9.0768463!3m2!1i1024!2i768!4f13.1!4m19!3e9!4m3!3m2!1d8.4948324!2d76.99590479999999!4m5!1s0x3b060df5674649b1%3A0x7c4d3f75ba90ec88!2sPanthaplavu%20aruvi%20point%20(Irappinchaal)%2C%203RC8%2B93R%2C%20Pattazhy%2C%20Kerala%20691522!3m2!1d9.0709816!2d76.81514059999999!4m3!3m2!1d9.0769696!2d76.82474739999999!4m3!3m2!1d9.0769399!2d76.8248472!5e0!3m2!1sen!2sin!4v1784444426728!5m2!1sen!2sin", 
 };
 
