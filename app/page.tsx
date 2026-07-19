@@ -143,7 +143,7 @@ return (
             </h1>
 
             <p className="mx-auto mt-9 max-w-xl text-base leading-7 text-[#5e6b70] sm:text-lg">
-              A fresh chapter, a new address, and a home waiting to be filled
+              A fresh chapter, a new beginning, and a home waiting to be filled
               with beautiful memories. Please join us as we celebrate.
             </p>
 
@@ -202,7 +202,7 @@ return (
             </p>
 
             <h2 className="mt-5 text-4xl font-semibold leading-tight sm:text-5xl">
-              Our story has a new address.
+              Our story has a new beginning.
             </h2>
 
             <p className="mt-6 max-w-xl text-base leading-8 text-[#5e6b70] sm:text-lg">
@@ -237,7 +237,7 @@ return (
           <SectionTitle
             label="Mark your calendar"
             title="The celebration details"
-            description="We would be delighted to have you with us for food, conversations, and new memories."
+            description="We would be delighted to have you with us for food, conversations, and many things."
           />
 
           <ScratchDetails
@@ -299,7 +299,7 @@ return (
         <SectionTitle
           label="Save the date"
           title="Will you join us?"
-          description="Please let us know if you can make it. We cannot wait to welcome you home."
+          description="We cannot wait to welcome you home."
         />
 
         <a
@@ -320,13 +320,13 @@ return (
         </p>
 
         <p className="mt-2 text-sm text-[#6f7a7d]">
-          We look forward to making new memories together.
+          We look forward to have you in the event together.
         </p>
       </footer>
 
       <div className="border-t border-[#22323a]/10 bg-[#22323a] px-5 py-3 text-center">
         <p className="text-xs font-medium tracking-wide text-white/70">
-          Developed by{""} &nbsp;
+          2026 All Rights Reserved | Developed by{""} &nbsp;
           <span className="font-bold text-[#d9a441]">MAHI</span>
         </p>
       </div>
