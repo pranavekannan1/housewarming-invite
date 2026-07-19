@@ -10,9 +10,11 @@ const event = {
   time: "12:00 PM onwards",
   eventDateTime: "2026-08-20T12:00:00+05:30",
   venue: "Kalabhavanam Panthaplavu Pattazhy",
-  address: "Kalabhavanam Panthaplavu P.O. Pattazhy, Kollam, Kerala 690533",
-  whatsappNumber: "919999999999",
-  mapurl: "https://maps.app.goo.gl/Ny82j3eoaqV9PVar8",
+  address: "Kalabhavanam Panthaplavu P.O. Pattazhy, Kollam, Kerala 691522",
+  latitude: 9.0769399,
+  longitude: 76.8248472,
+  whatsappNumber: "919961356278",
+  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m30!1m8!1m3!1d984.9640938651964!2d76.8250705!3d9.0768463!3m2!1i1024!2i768!4f13.1!4m19!3e9!4m3!3m2!1d8.4948324!2d76.99590479999999!4m5!1s0x3b060df5674649b1%3A0x7c4d3f75ba90ec88!2sPanthaplavu%20aruvi%20point%20(Irappinchaal)%2C%203RC8%2B93R%2C%20Pattazhy%2C%20Kerala%20691522!3m2!1d9.0709816!2d76.81514059999999!4m3!3m2!1d9.0769696!2d76.82474739999999!4m3!3m2!1d9.0769399!2d76.8248472!5e0!3m2!1sen!2sin!4v1784444426728!5m2!1sen!2sin", 
 };
 
 
@@ -68,12 +70,10 @@ function SectionTitle({
 
 export default function Home() {
   const whatsappMessage = encodeURIComponent(
-    `Hello ${event.hosts}! I would love to join your housewarming.`
+    `Thank you for your invitation ${event.hosts}! Congratulations on your new home and blessings for future happiness.`
   );
 
- const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-  event.address
-)}`;
+ const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${event.latitude},${event.longitude}`;
   const calendarText = `BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT
@@ -144,7 +144,7 @@ return (
                 rel="noreferrer"
                 className="rounded-full border border-[#22323a]/20 bg-white/60 px-7 py-4 text-sm font-bold transition hover:border-[#bc6c4b] hover:text-[#bc6c4b]"
               >
-                RSVP on WhatsApp
+                Share Wishes on WhatsApp
               </a>
             </div>
           </div>
@@ -262,14 +262,12 @@ return (
               </a>
             </div>
 
-            <iframe
-              title="Housewarming location map"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(
-                event.address
-              )}&output=embed`}
-              className="min-h-80 w-full border-0 md:min-h-full"
-              loading="lazy"
-            />
+       <iframe
+  title="Housewarming location map"
+  src={event.mapEmbedUrl}
+  className="min-h-80 w-full border-0 md:min-h-full"
+  loading="lazy"
+/>
           </div>
         </div>
       </section>
@@ -287,7 +285,7 @@ return (
           rel="noreferrer"
           className="mt-10 inline-flex rounded-full bg-[#22323a] px-8 py-5 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#bc6c4b] hover:shadow-xl"
         >
-          RSVP via WhatsApp
+          Share wishes on WhatsApp
         </a>
       </section>
 

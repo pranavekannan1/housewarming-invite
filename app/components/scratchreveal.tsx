@@ -2,18 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type Detail = {
-  label: string;
-  value: string;
-  hint: string;
+type EventDetails = {
+  date: string;
+  time: string;
+  venue: string;
 };
 
 function ScratchCard({
-  detail,
+  details,
   onReveal,
 }: {
-  detail: Detail;
-  onReveal: (detail: Detail) => void;
+  details: EventDetails;
+  onReveal: () => void;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isDrawing = useRef(false);
@@ -55,7 +55,7 @@ function ScratchCard({
     }
 
     context.fillStyle = "#22323a";
-    context.font = "bold 15px Arial";
+    context.font = "bold 16px Arial";
     context.textAlign = "center";
     context.fillText("SCRATCH TO REVEAL", rect.width / 2, rect.height / 2);
   }, []);
@@ -117,21 +117,38 @@ function ScratchCard({
       setRevealed(true);
 
       window.setTimeout(() => {
-        onReveal(detail);
+        onReveal();
       }, 500);
     }
   }
 
   return (
-    <article className="relative min-h-72 overflow-hidden rounded-3xl bg-[#22323a] shadow-lg">
-      <div className="flex min-h-72 flex-col justify-end p-7 text-white">
-        <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#d9a441]">
-          Celebration detail
+    <article className="relative mx-auto flex min-h-[24rem] w-full max-w-sm flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#22323a] via-[#2f4550] to-[#324b54] shadow-[0_20px_45px_rgba(34,50,58,0.18)] sm:min-h-[28rem]">
+      <div className="flex flex-col justify-center p-8 text-white sm:p-10">
+        <p className="text-sm font-bold uppercase tracking-[0.25em] text-[#d9a441]">
+          Event Details
         </p>
 
-        <p className="mt-3 text-3xl font-semibold">
-          {revealed ? detail.value : "Hidden"}
-        </p>
+        {revealed && (
+          <div className="mt-6 space-y-5">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#d9a441]">Date</p>
+              <p className="mt-2 text-xl font-semibold leading-tight">{details.date}</p>
+            </div>
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#d9a441]">Time</p>
+              <p className="mt-2 text-xl font-semibold leading-tight">{details.time}</p>
+            </div>
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#d9a441]">Venue</p>
+              <p className="mt-2 text-xl font-semibold leading-tight">{details.venue}</p>
+            </div>
+          </div>
+        )}
+
+        {!revealed && (
+          <p className="mt-6 text-2xl font-semibold leading-tight">Hidden</p>
+        )}
       </div>
 
       <canvas
@@ -151,7 +168,7 @@ function ScratchCard({
         className={`absolute inset-0 h-full w-full touch-none transition-opacity duration-500 ${
           revealed ? "pointer-events-none opacity-0" : "opacity-100"
         }`}
-        aria-label="Scratch to reveal event detail"
+        aria-label="Scratch to reveal event details"
       />
     </article>
   );
@@ -166,32 +183,29 @@ export default function ScratchDetails({
   time: string;
   venue: string;
 }) {
-  const [selectedDetail, setSelectedDetail] = useState<Detail | null>(null);
+  const [revealed, setRevealed] = useState(false);
 
-  const details: Detail[] = [
-    { label: "Date", value: date, hint: "Save this special day." },
-    { label: "Time", value: time, hint: "Keep your time free for us." },
-    { label: "Venue", value: venue, hint: "A new place to call home." },
-  ];
+  const eventDetails: EventDetails = {
+    date,
+    time,
+    venue,
+  };
 
   const confetti = Array.from({ length: 28 }, (_, index) => index);
 
   return (
     <>
-      <div className="mt-12 grid gap-5 md:grid-cols-3">
-        {details.map((detail) => (
-          <ScratchCard
-            key={detail.label}
-            detail={detail}
-            onReveal={setSelectedDetail}
-          />
-        ))}
+      <div className="mt-12 flex justify-center">
+        <ScratchCard
+          details={eventDetails}
+          onReveal={() => setRevealed(true)}
+        />
       </div>
 
-      {selectedDetail && (
+      {revealed && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-[#22323a]/75 px-5 py-8 backdrop-blur-sm"
-          onClick={() => setSelectedDetail(null)}
+          onClick={() => setRevealed(false)}
         >
           {confetti.map((item) => (
             <span
@@ -218,23 +232,40 @@ export default function ScratchDetails({
             onClick={(event) => event.stopPropagation()}
           >
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#bc6c4b]">
-              Celebration unlocked
+              All details revealed
             </p>
 
-            <div className="mx-auto mt-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#d9a441]/20 text-xs font-bold uppercase tracking-wider text-[#bc6c4b]">
-              {selectedDetail.label}
+            <div className="mt-8 space-y-6 text-left">
+              <div className="border-b border-[#22323a]/10 pb-6">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#bc6c4b]">
+                  Date
+                </p>
+                <p className="mt-3 text-2xl font-semibold text-[#22323a]">
+                  {date}
+                </p>
+              </div>
+
+              <div className="border-b border-[#22323a]/10 pb-6">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#bc6c4b]">
+                  Time
+                </p>
+                <p className="mt-3 text-2xl font-semibold text-[#22323a]">
+                  {time}
+                </p>
+              </div>
+
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#bc6c4b]">
+                  Venue
+                </p>
+                <p className="mt-3 text-2xl font-semibold text-[#22323a]">
+                  {venue}
+                </p>
+              </div>
             </div>
 
-            <h3 className="mt-6 text-3xl font-semibold text-[#22323a]">
-              {selectedDetail.value}
-            </h3>
-
-            <p className="mt-4 leading-7 text-[#5e6b70]">
-              {selectedDetail.hint}
-            </p>
-
             <button
-              onClick={() => setSelectedDetail(null)}
+              onClick={() => setRevealed(false)}
               className="mt-8 rounded-full bg-[#22323a] px-7 py-4 text-sm font-bold text-white transition hover:bg-[#bc6c4b]"
             >
               Continue celebrating
